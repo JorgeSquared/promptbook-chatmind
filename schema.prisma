@@ -1,0 +1,18 @@
+model Testimonial {
+  id        String   @id @default(cuid())
+  name      String
+  company   String
+  content   String
+  avatarUrl String?
+  createdAt DateTime @default(now())
+}
+
+model PricingPlan {
+  id          String   @id @default(cuid())
+  name        String
+  price       Float
+  description String
+  features    String // Stored as JSON string
+  isPopular   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+} 
