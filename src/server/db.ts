@@ -3,15 +3,16 @@
 // Mock database client
 export const db = {
   testimonial: {
-    findMany: async () => {
-      return [
+    findMany: async (options?: { orderBy?: { createdAt: 'desc' | 'asc' } }) => {
+      // Create a set of mock data
+      const testimonials = [
         {
           id: "1",
           name: "Sarah Johnson",
           company: "TechSolutions Inc.",
           content: "ChatMind transformed our customer support. We integrated it in minutes and saw a 40% reduction in response time. The personalization options are incredible!",
           avatarUrl: "https://i.pravatar.cc/150?u=sarah",
-          createdAt: new Date()
+          createdAt: new Date(2023, 10, 15) // Nov 15, 2023
         },
         {
           id: "2",
@@ -19,7 +20,7 @@ export const db = {
           company: "GrowthLabs",
           content: "The knowledge base integration is seamless. Our chatbot answers questions exactly like our team would. Setup was incredibly fast - under 5 minutes as promised.",
           avatarUrl: "https://i.pravatar.cc/150?u=michael",
-          createdAt: new Date()
+          createdAt: new Date(2023, 11, 10) // Dec 10, 2023
         },
         {
           id: "3",
@@ -27,9 +28,22 @@ export const db = {
           company: "Startup Foundry",
           content: "As a startup founder, I needed something quick and effective. ChatMind delivered beyond expectations. Our conversion rate increased by 25% in the first month.",
           avatarUrl: "https://i.pravatar.cc/150?u=jessica",
-          createdAt: new Date()
+          createdAt: new Date(2024, 0, 5) // Jan 5, 2024
         }
       ];
+
+      // Sort based on orderBy if provided
+      if (options?.orderBy?.createdAt) {
+        testimonials.sort((a, b) => {
+          if (options.orderBy?.createdAt === 'desc') {
+            return b.createdAt.getTime() - a.createdAt.getTime();
+          } else {
+            return a.createdAt.getTime() - b.createdAt.getTime();
+          }
+        });
+      }
+
+      return testimonials;
     },
     createMany: async ({ data }: { data: any[] }) => {
       console.log("Mock DB: Creating testimonials", data);
@@ -37,8 +51,9 @@ export const db = {
     }
   },
   pricingPlan: {
-    findMany: async () => {
-      return [
+    findMany: async (options?: { orderBy?: { price: 'desc' | 'asc' } }) => {
+      // Create a set of mock data
+      const plans = [
         {
           id: "1",
           name: "Starter",
@@ -52,7 +67,7 @@ export const db = {
             "Basic analytics",
           ]),
           isPopular: false,
-          createdAt: new Date()
+          createdAt: new Date(2023, 0, 1)
         },
         {
           id: "2",
@@ -69,7 +84,7 @@ export const db = {
             "API access",
           ]),
           isPopular: true,
-          createdAt: new Date()
+          createdAt: new Date(2023, 0, 1)
         },
         {
           id: "3",
@@ -87,9 +102,22 @@ export const db = {
             "SSO & advanced security",
           ]),
           isPopular: false,
-          createdAt: new Date()
+          createdAt: new Date(2023, 0, 1)
         }
       ];
+
+      // Sort based on orderBy if provided
+      if (options?.orderBy?.price) {
+        plans.sort((a, b) => {
+          if (options.orderBy?.price === 'desc') {
+            return b.price - a.price;
+          } else {
+            return a.price - b.price;
+          }
+        });
+      }
+
+      return plans;
     },
     createMany: async ({ data }: { data: any[] }) => {
       console.log("Mock DB: Creating pricing plans", data);
