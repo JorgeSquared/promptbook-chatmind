@@ -13,6 +13,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <title>ChatMind - Personal AI Chatbots</title>
+        <meta name="description" content="Create AI chatbots integrated in minutes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body>
         <QueryClientProvider client={queryClient}>
           {children}

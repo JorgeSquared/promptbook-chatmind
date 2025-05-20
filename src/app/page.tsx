@@ -17,7 +17,7 @@ import {
   Textarea,
   Badge,
   Separator,
-} from "../components/ui"; // We'll implement these component soon
+} from "../components/ui";
 import {
   Check,
   ChevronRight,
@@ -30,6 +30,7 @@ import {
   X,
   Zap,
 } from "lucide-react";
+import { Testimonial, PricingPlan } from "~/types";
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,12 +44,12 @@ export default function Home() {
   });
 
   // Fetch testimonials and pricing plans
-  const { data: testimonials = [] } = useQuery(
+  const { data: testimonials = [] } = useQuery<Testimonial[]>(
     ["testimonials"],
     apiClient.getTestimonials
   );
   
-  const { data: pricingPlans = [] } = useQuery(
+  const { data: pricingPlans = [] } = useQuery<PricingPlan[]>(
     ["pricingPlans"],
     apiClient.getPricingPlans
   );
@@ -270,7 +271,7 @@ export default function Home() {
             </motion.div>
             
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Feature cards would be mapped here - simplified for brevity */}
+              {/* Feature 1 */}
               <motion.div 
                 className="feature-card bg-card rounded-lg p-6 border"
                 initial="hidden"
@@ -288,7 +289,172 @@ export default function Home() {
                 </p>
               </motion.div>
               
-              {/* Additional feature cards would go here */}
+              {/* Feature 2 */}
+              <motion.div 
+                className="feature-card bg-card rounded-lg p-6 border"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                  <Zap className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">5-Minute Integration</h3>
+                <p className="text-muted-foreground">
+                  Add our chatbot to your website with just two lines of code. No complex setup or technical knowledge required.
+                </p>
+              </motion.div>
+              
+              {/* Feature 3 */}
+              <motion.div 
+                className="feature-card bg-card rounded-lg p-6 border"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <div className="bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                  <Sparkles className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">AI Personalization</h3>
+                <p className="text-muted-foreground">
+                  Our advanced AI learns from interactions to provide increasingly personalized responses that match your brand voice.
+                </p>
+              </motion.div>
+              
+              {/* Feature 4 */}
+              <motion.div 
+                className="feature-card bg-card rounded-lg p-6 border"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <div className="bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                  <Code className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Seamless Customization</h3>
+                <p className="text-muted-foreground">
+                  Customize the appearance of your chatbot to match your website's design and branding with our intuitive visual editor.
+                </p>
+              </motion.div>
+              
+              {/* Feature 5 */}
+              <motion.div 
+                className="feature-card bg-card rounded-lg p-6 border"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.5 }}
+              >
+                <div className="bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                  <MessageSquare className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Multi-Channel Support</h3>
+                <p className="text-muted-foreground">
+                  Deploy your chatbot across your website, mobile app, and social media platforms with consistent performance.
+                </p>
+              </motion.div>
+              
+              {/* Feature 6 */}
+              <motion.div 
+                className="feature-card bg-card rounded-lg p-6 border"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <div className="bg-primary/10 p-3 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                  <Database className="h-6 w-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">Analytics Dashboard</h3>
+                <p className="text-muted-foreground">
+                  Gain insights into customer interactions, popular questions, and chatbot performance with our comprehensive analytics.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* How It Works Section */}
+        <section className="py-20 bg-secondary/50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div 
+              className="text-center mb-16"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                How It <span className="gradient-text">Works</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                Get your personalized AI chatbot up and running in three simple steps.
+              </p>
+            </motion.div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Step 1 */}
+              <motion.div 
+                className="bg-card rounded-lg p-6 border relative"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.1 }}
+              >
+                <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
+                  1
+                </div>
+                <h3 className="text-xl font-semibold mb-4 mt-2">Upload Your Knowledge</h3>
+                <p className="text-muted-foreground">
+                  Upload your documents, FAQs, product information, and any other content you want your chatbot to know about.
+                </p>
+              </motion.div>
+              
+              {/* Step 2 */}
+              <motion.div 
+                className="bg-card rounded-lg p-6 border relative"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
+                  2
+                </div>
+                <h3 className="text-xl font-semibold mb-4 mt-2">Customize Your Chatbot</h3>
+                <p className="text-muted-foreground">
+                  Personalize the appearance and behavior of your chatbot to match your brand and meet your specific needs.
+                </p>
+              </motion.div>
+              
+              {/* Step 3 */}
+              <motion.div 
+                className="bg-card rounded-lg p-6 border relative"
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeIn}
+                transition={{ duration: 0.5, delay: 0.3 }}
+              >
+                <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
+                  3
+                </div>
+                <h3 className="text-xl font-semibold mb-4 mt-2">Integrate & Launch</h3>
+                <p className="text-muted-foreground">
+                  Add two simple lines of code to your website and your AI chatbot is ready to assist your visitors.
+                </p>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -349,7 +515,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Pricing Section (simplified) */}
+        {/* Pricing Section */}
         <section id="pricing" className="py-20 bg-secondary/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
@@ -368,11 +534,63 @@ export default function Home() {
               </p>
             </motion.div>
             
-            {/* Pricing cards would go here */}
+            <div className="grid md:grid-cols-3 gap-8">
+              {pricingPlans.map((plan, index) => (
+                <motion.div 
+                  key={plan.id}
+                  className={`pricing-card bg-card rounded-lg border relative ${
+                    plan.isPopular ? "border-primary shadow-lg" : ""
+                  }`}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  variants={fadeIn}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                >
+                  {plan.isPopular && (
+                    <Badge variant="default" className="popular-badge">
+                      Most Popular
+                    </Badge>
+                  )}
+                  
+                  <CardHeader>
+                    <CardTitle>{plan.name}</CardTitle>
+                    <CardDescription>{plan.description}</CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent>
+                    <div className="mb-4">
+                      <span className="text-4xl font-bold">${plan.price}</span>
+                      <span className="text-muted-foreground">/month</span>
+                    </div>
+                    
+                    <Separator className="my-4" />
+                    
+                    <ul className="space-y-2">
+                      {(JSON.parse(plan.features) as string[]).map((feature: string, i: number) => (
+                        <li key={i} className="flex items-start">
+                          <Check className="h-5 w-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                  
+                  <CardFooter>
+                    <Button 
+                      variant={plan.isPopular ? "default" : "outline"} 
+                      className="w-full"
+                    >
+                      Get Started
+                    </Button>
+                  </CardFooter>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
 
-        {/* Contact Form Section (simplified) */}
+        {/* Contact Section */}
         <section id="contact" className="py-20 bg-background">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
@@ -391,7 +609,93 @@ export default function Home() {
               </p>
             </motion.div>
             
-            {/* Contact form would go here */}
+            <div className="max-w-2xl mx-auto">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Contact Us</CardTitle>
+                  <CardDescription>
+                    Fill out the form below and we'll get back to you as soon as possible.
+                  </CardDescription>
+                </CardHeader>
+                
+                <CardContent>
+                  <form onSubmit={handleContactSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 gap-4">
+                      <div>
+                        <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+                        <Input
+                          id="name"
+                          name="name"
+                          value={contactForm.name}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={contactForm.email}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          rows={4}
+                          value={contactForm.message}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                    </div>
+                    
+                    <Button 
+                      type="submit" 
+                      className="w-full"
+                      disabled={contactMutation.isLoading}
+                    >
+                      {contactMutation.isLoading ? "Sending..." : "Send Message"}
+                    </Button>
+                  </form>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-primary text-primary-foreground">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div 
+              className="text-center max-w-3xl mx-auto"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeIn}
+              transition={{ duration: 0.5 }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Ready to Transform Your Customer Experience?
+              </h2>
+              <p className="text-lg mb-8 text-primary-foreground/90">
+                Join thousands of businesses using ChatMind to provide instant, personalized support to their customers.
+              </p>
+              <Button 
+                size="lg" 
+                variant="secondary"
+                className="text-primary font-bold"
+              >
+                Start Your Free Trial <ChevronRight className="ml-2 h-5 w-5" />
+              </Button>
+            </motion.div>
           </div>
         </section>
       </main>
@@ -407,7 +711,34 @@ export default function Home() {
               </p>
             </div>
             
-            {/* Footer links would go here */}
+            <div>
+              <h3 className="font-bold text-lg mb-4">Product</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#features" className="text-muted-foreground hover:text-foreground">Features</a></li>
+                <li><a href="#pricing" className="text-muted-foreground hover:text-foreground">Pricing</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-foreground">Documentation</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-foreground">API</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-bold text-lg mb-4">Company</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="text-muted-foreground hover:text-foreground">About</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-foreground">Blog</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-foreground">Careers</a></li>
+                <li><a href="#contact" className="text-muted-foreground hover:text-foreground">Contact</a></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-bold text-lg mb-4">Legal</h3>
+              <ul className="space-y-2 text-sm">
+                <li><a href="#" className="text-muted-foreground hover:text-foreground">Privacy Policy</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-foreground">Terms of Service</a></li>
+                <li><a href="#" className="text-muted-foreground hover:text-foreground">Cookie Policy</a></li>
+              </ul>
+            </div>
           </div>
           
           <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">

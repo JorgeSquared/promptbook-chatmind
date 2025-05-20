@@ -2,5 +2,5 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import theme css */
+/* Import theme CSS after Tailwind directives */
 @import "../styles/theme.css"; 
